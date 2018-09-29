@@ -9,15 +9,15 @@ import (
 
 func TestAllBreeds(t *testing.T) {
 	tests := []struct {
-		expectedStatus map[string]string
+		expectedStatus string
 	}{
-		{map[string]string{"status": "success"}},
+		{"success"},
 	}
 
 	for _, test := range tests {
 		client := InitClient()
 		client.AllBreeds()
-		actualStatus := client.Response.Status
+		actualStatus := client.Response
 
 		if !reflect.DeepEqual(actualStatus, test.expectedStatus) {
 			t.Errorf("All Breeds status was incorrect, got: %s, want: %s.",

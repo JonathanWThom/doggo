@@ -9,9 +9,7 @@ import (
 // back
 type Client struct {
 	BaseURL  string
-	Response struct {
-		Status map[string]string `json:"status"`
-	}
+	Response map[string]interface{}
 }
 
 // InitClient initializes a new client
@@ -29,5 +27,5 @@ func (c *Client) AllBreeds() error {
 	}
 	defer resp.Body.Close()
 
-	return json.NewDecoder(resp.Body).Decode(c.Response)
+	return json.NewDecoder(resp.Body).Decode(&c.Response)
 }
