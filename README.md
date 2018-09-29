@@ -27,6 +27,13 @@ Random Image - `https://dog.ceo/api/breeds/image/random`
 ### TODO
 
 * All the endpoints!
+  - `https://dog.ceo/api/breed/hound/images`
+  - `https://dog.ceo/api/breed/hound/images/random`
+  - `https://dog.ceo/api/breed/hound/images/random/3`
+  - `https://dog.ceo/api/breed/hound/list`
+  - `https://dog.ceo/api/breed/hound/afgan/images`
+  - `https://dog.ceo/api/breed/hound/afghan/images/random`
+  - `https://dog.ceo/api/breed/hound/afghan/images/random/3`
 * Stub test endpoints (they make real hits right now)
 
 ### License
