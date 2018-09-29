@@ -14,6 +14,16 @@ All Breeds - `https://dog.ceo/api/breeds/list/all`
   => map[bouvier:[] collie:[border] dane:[great] eskimo:[] ...
   ```
 
+Random Image - `https://dog.ceo/api/breeds/image/random`
+
+  ```
+  client := doggo.InitClient()
+  client.RandomImage()
+  resp := client.Response
+  fmt.Println(resp["message"])
+  => https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1161.jpg
+  ```
+
 ### TODO
 
 * All the endpoints!
