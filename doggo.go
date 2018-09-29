@@ -31,3 +31,22 @@ func (c *Client) AllBreeds() error {
 
 	return json.NewDecoder(resp.Body).Decode(&c.Response)
 }
+
+// RandomImage fetches all breeds
+// client.RandomImage()
+// resp := client.Response
+func (c *Client) RandomImage() error {
+	endpoint := "breeds/image/random"
+
+	return getResponse(c, endpoint)
+}
+
+func getResponse(c *Client, endpoint string) error {
+	resp, err := http.Get(c.BaseURL + endpoint)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	return json.NewDecoder(resp.Body).Decode(&c.Response)
+}
