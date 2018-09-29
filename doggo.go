@@ -19,6 +19,8 @@ func InitClient() Client {
 }
 
 // AllBreeds fetches all breeds
+// client.AllBreeds()
+// resp := client.Response
 func (c *Client) AllBreeds() error {
 	endpoint := "breeds/list/all"
 	resp, err := http.Get(c.BaseURL + endpoint)
