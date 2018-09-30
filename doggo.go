@@ -49,7 +49,7 @@ func (c *Client) RandomImage() error {
 // ImagesByBreed fetches all images available for a particular breed
 // client.ImagesByBreed("dachshund")
 func (c *Client) ImagesByBreed(breed string) error {
-	endpoint := "breed/" + strings.ToLower(breed) + "/images"
+	endpoint := getBreedImageEndpoint(breed)
 
 	return getResponse(c, endpoint)
 }
@@ -57,7 +57,7 @@ func (c *Client) ImagesByBreed(breed string) error {
 // RandomImageByBreed fetch a random image url for a particular breed
 // client RandomImageByBreed
 func (c *Client) RandomImageByBreed(breed string) error {
-	endpoint := "breed/" + strings.ToLower(breed) + "/images/random"
+	endpoint := getBreedImageEndpoint(breed) + "/random"
 
 	return getResponse(c, endpoint)
 }
@@ -70,4 +70,8 @@ func getResponse(c *Client, endpoint string) error {
 	defer resp.Body.Close()
 
 	return json.NewDecoder(resp.Body).Decode(&c.Response)
+}
+
+func getBreedImageEndpoint(breed string) string {
+	return "breed/" + strings.ToLower(breed) + "/images"
 }
