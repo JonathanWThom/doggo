@@ -3,7 +3,6 @@ package doggo
 import (
 	"encoding/json"
 	"net/http"
-	"strings"
 )
 
 // Client holds Dog API's base endpoint as well as the response the client receives
@@ -60,18 +59,4 @@ func (c *Client) RandomImageByBreed(breed string) error {
 	endpoint := getBreedImageEndpoint(breed) + "/random"
 
 	return getResponse(c, endpoint)
-}
-
-func getResponse(c *Client, endpoint string) error {
-	resp, err := http.Get(c.BaseURL + endpoint)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-
-	return json.NewDecoder(resp.Body).Decode(&c.Response)
-}
-
-func getBreedImageEndpoint(breed string) string {
-	return "breed/" + strings.ToLower(breed) + "/images"
 }
