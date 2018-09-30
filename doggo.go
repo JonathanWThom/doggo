@@ -43,7 +43,7 @@ func (c *Client) RandomImage() error {
 }
 
 // ImagesByBreed fetches all images available for a particular breed
-// client.RandomImage("dachshund")
+// client.ImagesByBreed("dachshund")
 // resp := client.Response
 func (c *Client) ImagesByBreed(breed string) error {
 	endpoint := "breed/" + strings.ToLower(breed) + "/images"
