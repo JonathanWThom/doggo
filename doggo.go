@@ -3,6 +3,7 @@ package doggo
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 )
 
 // Client holds Dog API's base endpoint as well as the response the client receives
@@ -48,15 +49,23 @@ func (c *Client) RandomImage() error {
 // ImagesByBreed fetches all images available for a particular breed
 // client.ImagesByBreed("dachshund")
 func (c *Client) ImagesByBreed(breed string) error {
-	endpoint := getBreedImageEndpoint(breed)
+	endpoint := getBreedEndpoint(breed)
 
 	return getResponse(c, endpoint)
 }
 
 // RandomImageByBreed fetch a random image url for a particular breed
-// client RandomImageByBreed
+// client.RandomImageByBreed("dachshund")
 func (c *Client) RandomImageByBreed(breed string) error {
-	endpoint := getBreedImageEndpoint(breed) + "/random"
+	endpoint := getRandomBreedEndpoint(breed)
+
+	return getResponse(c, endpoint)
+}
+
+// MultipleImagesByBreed fetches a set number of random images from a particular breed
+// client.MultipleImagesByBreed("dachshund", 3)
+func (c *Client) MultipleImagesByBreed(breed string, num int) error {
+	endpoint := getRandomBreedEndpoint(breed) + "/" + strconv.Itoa(num)
 
 	return getResponse(c, endpoint)
 }

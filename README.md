@@ -44,10 +44,19 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
   => https://images.dog.ceo/breeds/dachshund/Standard_Wire-hair_Dachshund.jpg
   ```
 
+**Multiple Images By Breed** - `https://dog.ceo/api/breed/hound/images/random/3`
+
+  ```
+  client := doggo.InitClient()
+  client.MultipleImagesByBreed("dachshund", 3)
+  fmt.Println(client.Response.Message)
+
+  => [https://images.dog.ceo/breeds/dachshund/Stretched_Dachshund.jpg https://images.dog.ceo/breeds/dachshund/dachshund-2033796_640.jpg https://images.dog.ceo/breeds/dachshund/dachshund-6.jpg]
+  ```
+
 ### TODO
 
 * All the endpoints!
-  - `https://dog.ceo/api/breed/hound/images/random/3`
   - `https://dog.ceo/api/breed/hound/list`
   - `https://dog.ceo/api/breed/hound/afgan/images`
   - `https://dog.ceo/api/breed/hound/afghan/images/random`
@@ -57,6 +66,7 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
 * Should a client instance hold all responses it has received, or just the most
 recent one?
 * Can `ImagesByBreed` and `RandomImageByBreed` be combined somehow?
+* Should breed live on `Client`?
 
 ### License
 

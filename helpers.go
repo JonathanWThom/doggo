@@ -16,6 +16,10 @@ func getResponse(c *Client, endpoint string) error {
 	return json.NewDecoder(resp.Body).Decode(&c.Response)
 }
 
-func getBreedImageEndpoint(breed string) string {
+func getBreedEndpoint(breed string) string {
 	return "breed/" + strings.ToLower(breed) + "/images"
+}
+
+func getRandomBreedEndpoint(breed string) string {
+	return getBreedEndpoint(breed) + "/random"
 }
