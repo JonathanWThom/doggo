@@ -5,6 +5,7 @@ import (
 )
 
 // TODO: Eventually these responses will need to be stubbed
+// TODO: Tests could maybe be DRYed up with helpers.
 
 func TestAllBreeds(t *testing.T) {
 	tests := []struct {
@@ -48,6 +49,30 @@ func TestRandomImage(t *testing.T) {
 
 		if client.Response["message"] == nil {
 			t.Errorf("Random Image message was not present")
+		}
+	}
+}
+
+func TestImagesByBreed(t *testing.T) {
+	tests := []struct {
+		breed          string
+		expectedStatus string
+	}{
+		{"dachshund", "success"},
+	}
+
+	for _, test := range tests {
+		client := InitClient()
+		client.ImagesByBreed(test.breed)
+
+		actualStatus := client.Response["status"]
+		if actualStatus != test.expectedStatus {
+			t.Errorf("Images By Breed status was incorrect, got: %s, want: %s.",
+				actualStatus, test.expectedStatus)
+		}
+
+		if client.Response["message"] == nil {
+			t.Errorf("Images By Breed message was not present")
 		}
 	}
 }

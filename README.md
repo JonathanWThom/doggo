@@ -24,10 +24,19 @@ Random Image - `https://dog.ceo/api/breeds/image/random`
   => https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1161.jpg
   ```
 
+All Images By Breed - `https://dog.ceo/api/breeds/image/random`
+
+  ```
+  client := doggo.InitClient()
+  client.ImagesByBreed("dachshund")
+  resp := client.Response
+  fmt.Println(resp["message"])
+  => [https://images.dog.ceo/breeds/dachshund/Dachshund_rabbit.jpg https://images.dog.ceo/breeds/dachshund/Daschund-2.jpg ...]
+  ```
+
 ### TODO
 
 * All the endpoints!
-  - `https://dog.ceo/api/breed/hound/images`
   - `https://dog.ceo/api/breed/hound/images/random`
   - `https://dog.ceo/api/breed/hound/images/random/3`
   - `https://dog.ceo/api/breed/hound/list`
