@@ -174,3 +174,28 @@ func TestSubBreedImages(t *testing.T) {
 		}
 	}
 }
+
+func TestRandomImageBySubBreed(t *testing.T) {
+	tests := []struct {
+		breed          string
+		subbreed       string
+		expectedStatus string
+	}{
+		{"hound", "afghan", "success"},
+	}
+
+	for _, test := range tests {
+		client := InitClient()
+		client.RandomImageBySubBreed(test.breed, test.subbreed)
+
+		actualStatus := client.Response.Status
+		if actualStatus != test.expectedStatus {
+			t.Errorf("Sub Breed Images status was incorrect, got: %s, want: %s.",
+				actualStatus, test.expectedStatus)
+		}
+
+		if client.Response.Message == nil {
+			t.Errorf("Sub Breed Images message was not present")
+		}
+	}
+}

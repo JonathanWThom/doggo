@@ -27,3 +27,7 @@ func getBreedImageEndpoint(breed string) string {
 func getRandomBreedEndpoint(breed string) string {
 	return getBreedImageEndpoint(breed) + "/random"
 }
+
+func getSubBreedImageEndpoint(breed, subbreed string) string {
+	return getBreedEndpoint(breed) + "/" + subbreed + "/images"
+}

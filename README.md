@@ -74,10 +74,19 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
   => [https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg ...]
   ```
 
+**Random Sub Breed Image** - `https://dog.ceo/api/breed/hound/afghan/images/random`
+
+  ```
+  client := doggo.InitClient()
+  client.RandomImageBySubBreed("hound", "afghan")
+  fmt.Println(client.Response.Message)
+
+  => https://images.dog.ceo/breeds/hound-afghan/n02088094_7131.jpg
+  ```
+
 ### TODO
 
 * All the endpoints!
-  - `https://dog.ceo/api/breed/hound/afghan/images/random`
   - `https://dog.ceo/api/breed/hound/afghan/images/random/3`
 * Stub test endpoints (they make real hits right now).
 * Tests for `client.Response.Message` could be more specific to the response we want.

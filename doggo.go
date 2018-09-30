@@ -78,10 +78,18 @@ func (c *Client) SubBreeds(breed string) error {
 	return getResponse(c, endpoint)
 }
 
-// SubBreedImages fetches all images for a subbreed of a given breed
+// SubBreedImages fetches all images for a given sub-breed
 // client.SubBreedImages("hound", "afghan")
 func (c *Client) SubBreedImages(breed, subbreed string) error {
-	endpoint := getBreedEndpoint(breed) + "/" + subbreed + "/images"
+	endpoint := getSubBreedImageEndpoint(breed, subbreed)
+
+	return getResponse(c, endpoint)
+}
+
+// RandomImageBySubBreed fetches a random image for a given sub-breed
+// client.RandomImageBySubBreed("hound", "afghan")
+func (c *Client) RandomImageBySubBreed(breed, subbreed string) error {
+	endpoint := getSubBreedImageEndpoint(breed, subbreed) + "/random"
 
 	return getResponse(c, endpoint)
 }
