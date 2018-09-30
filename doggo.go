@@ -77,3 +77,11 @@ func (c *Client) SubBreeds(breed string) error {
 
 	return getResponse(c, endpoint)
 }
+
+// SubBreedImages fetches all images for a subbreed of a given breed
+// client.SubBreedImages("hound", "afghan")
+func (c *Client) SubBreedImages(breed, subbreed string) error {
+	endpoint := getBreedEndpoint(breed) + "/" + subbreed + "/images"
+
+	return getResponse(c, endpoint)
+}

@@ -64,10 +64,19 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
   => [afghan basset blood english ibizan walker]
   ```
 
+**Sub Breed Images** - `https://dog.ceo/api/breed/hound/afghan/images`
+
+  ```
+  client := doggo.InitClient()
+  client.SubBreedImages("hound", "afghan")
+  fmt.Println(client.Response.Message)
+
+  => [https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg ...]
+  ```
+
 ### TODO
 
 * All the endpoints!
-  - `https://dog.ceo/api/breed/hound/afgan/images`
   - `https://dog.ceo/api/breed/hound/afghan/images/random`
   - `https://dog.ceo/api/breed/hound/afghan/images/random/3`
 * Stub test endpoints (they make real hits right now).
