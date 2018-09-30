@@ -22,7 +22,7 @@ Random Image - `https://dog.ceo/api/breeds/image/random`
   => https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1161.jpg
   ```
 
-All Images By Breed - `https://dog.ceo/api/breeds/image/random`
+All Images By Breed - `https://dog.ceo/api/breed/dachshund/images`
 
   ```
   client := doggo.InitClient()
