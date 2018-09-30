@@ -89,7 +89,15 @@ func (c *Client) SubBreedImages(breed, subbreed string) error {
 // RandomImageBySubBreed fetches a random image for a given sub-breed
 // client.RandomImageBySubBreed("hound", "afghan")
 func (c *Client) RandomImageBySubBreed(breed, subbreed string) error {
-	endpoint := getSubBreedImageEndpoint(breed, subbreed) + "/random"
+	endpoint := getRandomSubBreedImageEndpoint(breed, subbreed)
+
+	return getResponse(c, endpoint)
+}
+
+// MultipleImagesBySubBreed fetches a set number of random images from a particular sub-breed
+// client.MultipleImagesBySubBreed("hound", "afghan", 3)
+func (c *Client) MultipleImagesBySubBreed(breed, subbreed string, num int) error {
+	endpoint := getRandomSubBreedImageEndpoint(breed, subbreed) + "/" + strconv.Itoa(num)
 
 	return getResponse(c, endpoint)
 }

@@ -4,9 +4,6 @@ import (
 	"testing"
 )
 
-// TODO: Eventually these responses will need to be stubbed
-// TODO: Tests could maybe be DRYed up with helpers.
-
 func TestAllBreeds(t *testing.T) {
 	tests := []struct {
 		expectedStatus string
@@ -190,12 +187,38 @@ func TestRandomImageBySubBreed(t *testing.T) {
 
 		actualStatus := client.Response.Status
 		if actualStatus != test.expectedStatus {
-			t.Errorf("Sub Breed Images status was incorrect, got: %s, want: %s.",
+			t.Errorf("Random Sub Breed Images status was incorrect, got: %s, want: %s.",
 				actualStatus, test.expectedStatus)
 		}
 
 		if client.Response.Message == nil {
-			t.Errorf("Sub Breed Images message was not present")
+			t.Errorf("Random Sub Breed Images message was not present")
+		}
+	}
+}
+
+func TestMultipleImagesBySubBreed(t *testing.T) {
+	tests := []struct {
+		breed          string
+		subbreed       string
+		num            int
+		expectedStatus string
+	}{
+		{"hound", "afghan", 3, "success"},
+	}
+
+	for _, test := range tests {
+		client := InitClient()
+		client.MultipleImagesBySubBreed(test.breed, test.subbreed, test.num)
+
+		actualStatus := client.Response.Status
+		if actualStatus != test.expectedStatus {
+			t.Errorf("Multiple Images by Sub Breed status was incorrect, got: %s, want: %s.",
+				actualStatus, test.expectedStatus)
+		}
+
+		if client.Response.Message == nil {
+			t.Errorf("Multiple Images by Sub Breed message was not present")
 		}
 	}
 }

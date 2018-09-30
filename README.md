@@ -84,11 +84,20 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
   => https://images.dog.ceo/breeds/hound-afghan/n02088094_7131.jpg
   ```
 
+**Multiple Images by Sub Breed** - `https://dog.ceo/api/breed/hound/afghan/images/random/3`
+
+  ```
+  client := doggo.InitClient()
+  client.MultipleImagesBySubBreed("hound", "afghan", 3)
+  fmt.Println(client.Response.Message)
+
+  => [https://images.dog.ceo/breeds/hound-afghan/n02088094_4635.jpg https://images.dog.ceo/breeds/hound-afghan/n02088094_6690.jpg https://images.dog.ceo/breeds/hound-afghan/n02088094_988.jpg]
+  ```
+
 ### TODO
 
-* All the endpoints!
-  - `https://dog.ceo/api/breed/hound/afghan/images/random/3`
 * Stub test endpoints (they make real hits right now).
+* DRY up tests with helpers, potentially.
 * Tests for `client.Response.Message` could be more specific to the response we want.
 * Should a client instance hold all responses it has received, or just the most
 recent one?
