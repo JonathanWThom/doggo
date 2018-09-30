@@ -44,7 +44,7 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
   => https://images.dog.ceo/breeds/dachshund/Standard_Wire-hair_Dachshund.jpg
   ```
 
-**Multiple Images By Breed** - `https://dog.ceo/api/breed/hound/images/random/3`
+**Multiple Images By Breed** - `https://dog.ceo/api/breed/dachshund/images/random/3`
 
   ```
   client := doggo.InitClient()
@@ -54,10 +54,19 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
   => [https://images.dog.ceo/breeds/dachshund/Stretched_Dachshund.jpg https://images.dog.ceo/breeds/dachshund/dachshund-2033796_640.jpg https://images.dog.ceo/breeds/dachshund/dachshund-6.jpg]
   ```
 
+**Sub Breeds** - `https://dog.ceo/api/breed/hound/list`
+
+  ```
+  client := doggo.InitClient()
+  client.SubBreeds("hound")
+  fmt.Println(client.Response.Message)
+
+  => [afghan basset blood english ibizan walker]
+  ```
+
 ### TODO
 
 * All the endpoints!
-  - `https://dog.ceo/api/breed/hound/list`
   - `https://dog.ceo/api/breed/hound/afgan/images`
   - `https://dog.ceo/api/breed/hound/afghan/images/random`
   - `https://dog.ceo/api/breed/hound/afghan/images/random/3`

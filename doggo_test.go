@@ -125,3 +125,27 @@ func TestMultipleImagesByBreed(t *testing.T) {
 		}
 	}
 }
+
+func TestSubBreeds(t *testing.T) {
+	tests := []struct {
+		breed          string
+		expectedStatus string
+	}{
+		{"hound", "success"},
+	}
+
+	for _, test := range tests {
+		client := InitClient()
+		client.SubBreeds(test.breed)
+
+		actualStatus := client.Response.Status
+		if actualStatus != test.expectedStatus {
+			t.Errorf("Sub Breeds status was incorrect, got: %s, want: %s.",
+				actualStatus, test.expectedStatus)
+		}
+
+		if client.Response.Message == nil {
+			t.Errorf("Sub Breeds message was not present")
+		}
+	}
+}

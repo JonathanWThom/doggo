@@ -49,7 +49,7 @@ func (c *Client) RandomImage() error {
 // ImagesByBreed fetches all images available for a particular breed
 // client.ImagesByBreed("dachshund")
 func (c *Client) ImagesByBreed(breed string) error {
-	endpoint := getBreedEndpoint(breed)
+	endpoint := getBreedImageEndpoint(breed)
 
 	return getResponse(c, endpoint)
 }
@@ -66,6 +66,14 @@ func (c *Client) RandomImageByBreed(breed string) error {
 // client.MultipleImagesByBreed("dachshund", 3)
 func (c *Client) MultipleImagesByBreed(breed string, num int) error {
 	endpoint := getRandomBreedEndpoint(breed) + "/" + strconv.Itoa(num)
+
+	return getResponse(c, endpoint)
+}
+
+// SubBreeds fetches a list of sub-breeds for a given breed
+// client.SubBreeds("hound")
+func (c *Client) SubBreeds(breed string) error {
+	endpoint := getBreedEndpoint(breed) + "/list"
 
 	return getResponse(c, endpoint)
 }

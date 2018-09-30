@@ -17,9 +17,13 @@ func getResponse(c *Client, endpoint string) error {
 }
 
 func getBreedEndpoint(breed string) string {
-	return "breed/" + strings.ToLower(breed) + "/images"
+	return "breed/" + strings.ToLower(breed)
+}
+
+func getBreedImageEndpoint(breed string) string {
+	return getBreedEndpoint(breed) + "/images"
 }
 
 func getRandomBreedEndpoint(breed string) string {
-	return getBreedEndpoint(breed) + "/random"
+	return getBreedImageEndpoint(breed) + "/random"
 }
