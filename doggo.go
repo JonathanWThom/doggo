@@ -15,7 +15,7 @@ type Client struct {
 
 // Response holds the status and message returned from each API call
 type Response struct {
-	Status  interface{} `json:"status"`
+	Status  string      `json:"status"`
 	Message interface{} `json:"message"`
 }
 
