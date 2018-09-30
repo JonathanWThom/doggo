@@ -18,13 +18,13 @@ func TestAllBreeds(t *testing.T) {
 		client := InitClient()
 		client.AllBreeds()
 
-		actualStatus := client.Response["status"]
+		actualStatus := client.Response.Status
 		if actualStatus != test.expectedStatus {
 			t.Errorf("All Breeds status was incorrect, got: %s, want: %s.",
 				actualStatus, test.expectedStatus)
 		}
 
-		if client.Response["message"] == nil {
+		if client.Response.Message == nil {
 			t.Errorf("All Breeds message was not present")
 		}
 	}
@@ -41,13 +41,13 @@ func TestRandomImage(t *testing.T) {
 		client := InitClient()
 		client.RandomImage()
 
-		actualStatus := client.Response["status"]
+		actualStatus := client.Response.Status
 		if actualStatus != test.expectedStatus {
 			t.Errorf("Random Image status was incorrect, got: %s, want: %s.",
 				actualStatus, test.expectedStatus)
 		}
 
-		if client.Response["message"] == nil {
+		if client.Response.Message == nil {
 			t.Errorf("Random Image message was not present")
 		}
 	}
@@ -65,13 +65,13 @@ func TestImagesByBreed(t *testing.T) {
 		client := InitClient()
 		client.ImagesByBreed(test.breed)
 
-		actualStatus := client.Response["status"]
+		actualStatus := client.Response.Status
 		if actualStatus != test.expectedStatus {
 			t.Errorf("Images By Breed status was incorrect, got: %s, want: %s.",
 				actualStatus, test.expectedStatus)
 		}
 
-		if client.Response["message"] == nil {
+		if client.Response.Message == nil {
 			t.Errorf("Images By Breed message was not present")
 		}
 	}

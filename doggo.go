@@ -10,7 +10,13 @@ import (
 // back
 type Client struct {
 	BaseURL  string
-	Response map[string]interface{} // Could this be split up into status/message in a nicer way?
+	Response Response
+}
+
+// Response holds the status and message returned from each API call
+type Response struct {
+	Status  interface{} `json:"status"`
+	Message interface{} `json:"message"`
 }
 
 // InitClient initializes a new client
