@@ -4,6 +4,10 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
 
 ### Usage & Supported Endpoints
 
+**Installation**
+
+`go get -u github.com/JonathanWThom/doggo`
+
 **All Breeds** - `https://dog.ceo/api/breeds/list/all`
 
   ```
@@ -94,15 +98,14 @@ Go client for the [Dog API](https://dog.ceo/dog-api/).
   => [https://images.dog.ceo/breeds/hound-afghan/n02088094_4635.jpg https://images.dog.ceo/breeds/hound-afghan/n02088094_6690.jpg https://images.dog.ceo/breeds/hound-afghan/n02088094_988.jpg]
   ```
 
-### TODO
+### Todo & Design Questions
 
 * Stub test endpoints (they make real hits right now).
 * DRY up tests with helpers, potentially.
 * Tests for `client.Response.Message` could be more specific to the response we want.
 * Should a client instance hold all responses it has received, or just the most
 recent one?
-* Can `ImagesByBreed` and `RandomImageByBreed` be combined somehow?
-* Should breed live on `Client`?
+* Should breed and sub-breed live on `Client`?
 
 ### License
 
