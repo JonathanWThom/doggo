@@ -27,7 +27,6 @@ func InitClient() Client {
 
 // AllBreeds fetches all breeds
 // client.AllBreeds()
-// resp := client.Response
 func (c *Client) AllBreeds() error {
 	endpoint := "breeds/list/all"
 	resp, err := http.Get(c.BaseURL + endpoint)
@@ -41,7 +40,6 @@ func (c *Client) AllBreeds() error {
 
 // RandomImage fetches a random image url
 // client.RandomImage()
-// resp := client.Response
 func (c *Client) RandomImage() error {
 	endpoint := "breeds/image/random"
 
@@ -50,9 +48,16 @@ func (c *Client) RandomImage() error {
 
 // ImagesByBreed fetches all images available for a particular breed
 // client.ImagesByBreed("dachshund")
-// resp := client.Response
 func (c *Client) ImagesByBreed(breed string) error {
 	endpoint := "breed/" + strings.ToLower(breed) + "/images"
+
+	return getResponse(c, endpoint)
+}
+
+// RandomImageByBreed fetch a random image url for a particular breed
+// client RandomImageByBreed
+func (c *Client) RandomImageByBreed(breed string) error {
+	endpoint := "breed/" + strings.ToLower(breed) + "/images/random"
 
 	return getResponse(c, endpoint)
 }

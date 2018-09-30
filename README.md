@@ -31,10 +31,18 @@ All Images By Breed - `https://dog.ceo/api/breed/dachshund/images`
   => [https://images.dog.ceo/breeds/dachshund/Dachshund_rabbit.jpg https://images.dog.ceo/breeds/dachshund/Daschund-2.jpg ...]
   ```
 
+Random Image By Breed - `https://dog.ceo/api/breed/dachshund/images/random`
+
+  ```
+  client := doggo.InitClient()
+  client.RandomImageByBreed("dachshund")
+  fmt.Println(client.Response.Message)
+  => https://images.dog.ceo/breeds/dachshund/Standard_Wire-hair_Dachshund.jpg
+  ```
+
 ### TODO
 
 * All the endpoints!
-  - `https://dog.ceo/api/breed/hound/images/random`
   - `https://dog.ceo/api/breed/hound/images/random/3`
   - `https://dog.ceo/api/breed/hound/list`
   - `https://dog.ceo/api/breed/hound/afgan/images`
@@ -43,6 +51,7 @@ All Images By Breed - `https://dog.ceo/api/breed/dachshund/images`
 * Stub test endpoints (they make real hits right now)
 * Should a client instance hold all responses it has received, or just the most
 recent one?
+* Can `ImagesByBreed` and `RandomImageByBreed` be combined somehow?
 
 ### License
 

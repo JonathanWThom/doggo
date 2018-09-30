@@ -76,3 +76,27 @@ func TestImagesByBreed(t *testing.T) {
 		}
 	}
 }
+
+func TestRandomImageByBreed(t *testing.T) {
+	tests := []struct {
+		breed          string
+		expectedStatus string
+	}{
+		{"dachshund", "success"},
+	}
+
+	for _, test := range tests {
+		client := InitClient()
+		client.RandomImageByBreed(test.breed)
+
+		actualStatus := client.Response.Status
+		if actualStatus != test.expectedStatus {
+			t.Errorf("Random Image By Breed status was incorrect, got: %s, want: %s.",
+				actualStatus, test.expectedStatus)
+		}
+
+		if client.Response.Message == nil {
+			t.Errorf("Random Image By Breed message was not present")
+		}
+	}
+}
